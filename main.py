@@ -8,7 +8,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 # 1. Inisialisasi API Key & Chat ID
 TELEGRAM_TOKEN = "8985712066:AAHS4DuoBgpqQGQ9ba_sHnPpNjkp3-sIsc8"
-GEMINI_API_KEY = "AQ.Ab8RN6LJkRmkX3R59ABKQ2sxnKn_wyazxqbIuOIFhbUQGGzXTw"
+GEMINI_API_KEY = "AQ.Ab8RN6Ilgwn6w5zYP7qjoCSyvnZ8Jar39VOo_m6BvbtSwzX1aA"  # Ganti dengan API Key Gemini kamu
 
 # CHAT ID Kamu
 MY_CHAT_ID = 1409170184  
@@ -54,7 +54,7 @@ async def send_daily_news_job(context: ContextTypes.DEFAULT_TYPE):
     raw_news = get_latest_football_news()
     prompt = f"Berikut adalah berita bola terbaru hari ini:\n{raw_news}\n\nRangkum berita di atas jadi rangkuman harian ter-hits dengan gaya tengil kamu!"
 
-    models_to_try = ['gemini-3.6-flash', 'gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
+    models_to_try = ['gemini-3.8-flash', 'gemini-3.6-flash']
     
     for model_name in models_to_try:
         try:
@@ -77,7 +77,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_text = update.message.text
     await context.bot.send_chat_action(chat_id=update.effective_chat.id, action="typing")
 
-    models_to_try = ['gemini-3.6-flash', 'gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
+    models_to_try = ['gemini-3.8-flash', 'gemini-3.6-flash']
     
     for model_name in models_to_try:
         try:
